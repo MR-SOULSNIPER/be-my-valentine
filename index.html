@@ -1,100 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Will You Be My Valentine? 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #ffe6f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
 
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    background: linear-gradient(-45deg, #ff4b7d, #ff758c, #ff7eb3, #ff4b5c);
-    background-size: 400% 400%;
-    animation: gradient 8s ease infinite;
-    color: white;
-}
+    h1 {
+      color: #ff3366;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
 
-@keyframes gradient {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
+    button {
+      background-color: #ff6699;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 40px;
-}
+    button:hover {
+      background-color: #ff3366;
+    }
 
-button {
-    margin: 15px;
-    padding: 15px 40px;
-    font-size: 20px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#yesBtn {
-    background-color: white;
-    color: #ff4b7d;
-}
-
-#yesBtn:hover {
-    background-color: #ff4b7d;
-    color: white;
-    transform: scale(1.05);
-}
-
-#noBtn {
-    background-color: white;
-    color: #4b4b4b;
-}
-
-#noBtn:hover {
-    background-color: #4b4b4b;
-    color: white;
-    transform: scale(1.05);
-}
-
-#response {
-    margin-top: 30px;
-    font-size: 1.5em;
-    display: none;
-    width: 80%;
-    line-height: 1.6;
-}
-</style>
+    #message {
+      margin-top: 30px;
+      font-size: 1.5em;
+      color: #cc0044;
+    }
+  </style>
 </head>
-
 <body>
+  <h1>Will you be my Valentine?</h1>
+  <div id="buttons">
+    <button onclick="yesClicked()">Yes</button>
+    <button onclick="noClicked()">No</button>
+  </div>
+  <div id="message"></div>
 
-<h1>Angel, will you be my Valentine? 💖</h1>
+  <script>
+    function yesClicked() {
+      document.getElementById('buttons').style.display = 'none';
+      document.getElementById('message').innerHTML = "💖 Yay! You make my heart skip a beat! 💖";
+    }
 
-<button id="yesBtn" onclick="pressYes()">YES</button>
-<button id="noBtn" onclick="pressNo()">NO</button>
+    function noClicked() {
+      const buttonsDiv = document.getElementById('buttons');
+      buttonsDiv.innerHTML = `
+        <p>Are you sure?</p>
+        <button onclick="noClickedAgain()">No</button>
+        <button onclick="noClickedAgain()">No</button>
+      `;
+    }
 
-<div id="response"></div>
-
-<script>
-function pressYes() {
-    document.getElementById("response").style.display = "block";
-    document.getElementById("response").innerHTML = `
-        💖 Yay! Angel, you made me the happiest person alive!  
-        I’m so glad you said YES.  
-        I promise to make this Valentine’s Day and every day special for you. 💘
-    `;
-    document.getElementById("yesBtn").style.display = "none";
-    document.getElementById("noBtn").style.display = "none";
-}
-
-function pressNo() {
-    alert("Oh no! I guess I’ll
+    function noClickedAgain() {
+      document.getElementById('message').innerHTML = "😢 Oh no! Maybe next time... 😢";
+      document.getElementById('buttons').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
